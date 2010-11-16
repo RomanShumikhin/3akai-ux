@@ -364,6 +364,7 @@ sakai.listpage = function(){
         // HARD-CODING FOR POC
         $("select option[value='ced']").attr("selected","selected");
         
+		$(".major_checkbox").removeAttr("checked"); // Resetting the list of majors   
         var majorArray = list.query.major;
         for(var i = 0, j = majorArray.length; i < j; i++) {
             var major = majorArray[i].replace(/ /g, "_");
