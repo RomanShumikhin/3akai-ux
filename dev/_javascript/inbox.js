@@ -806,7 +806,11 @@ sakai.inbox = function() {
             types = "&types=" + selectedType.join(",");
         }
 
-        cats = selectedCategory || "Message";
+		// Fix for MYB-315
+		// If you select Trash variable cats becomes "Messages", because selectedCategory is empty in this case.
+		// This causes the second AJAX call with url2 to fail.
+		// Assigning default value "message" to variable cats fixes this problem.
+        cats = "message"; // was: cats = selectedCategory || "Message";
         if (selectedCategory){
             if (selectedCategory === "Message"){
                 cats = "message";
